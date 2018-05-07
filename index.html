@@ -7,5 +7,39 @@
 </head>
 <body>
   <audio controls crossorigin="anonymous" src="./test.mp3" id="audio"></audio>
+  
+  <script type="text/javascript">
+    var audio = document.getElementById('audio');
+
+
+    // this play() looks like it is getting applied after the load() call
+    audio.play().then(function() {
+      console.log('success');
+
+      //the pause below does apply
+      //audio.pause();
+
+    }, function(e) { console.log('error', e); });
+
+
+    // this should reject the play() call above
+    // but it doesn't
+    audio.pause();
+
+    audio.load();
+
+    // We now start playing even though pause() was called
+    // above
+
+
+    // uncommenting any of following doesn't make a difference
+    // audio.pause();
+
+    //window.setTimeout(function() {
+    //  console.log('calling pause()');
+    //  audio.pause();
+    //}, 0);
+
+  </script>
 </body>
 </html>
