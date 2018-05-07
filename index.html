@@ -8,12 +8,14 @@
 <body>
   <p>
     Playback should be paused. In edge 16 this is the case. In edge 17 it is not. It seems that the <code>play()</code> call
-    gets buffered until after the <code>load()</code> call, and no other `pause()` calls cancel it.
+    gets buffered until after the <code>load()</code> call, and no other <code>pause()</code> calls cancel it.
   </p>
   
   <audio controls crossorigin="anonymous" src="./test.mp3" id="audio"></audio>
   
-  <script type="text/javascript">
+  <pre id="source"></pre>
+  
+  <script type="text/javascript" id="script">
     var audio = document.getElementById('audio');
 
 
@@ -45,6 +47,9 @@
     //  audio.pause();
     //}, 0);
 
+  </script>
+  <script type="text/javascript" id="script">
+    document.getElementById("source").innerHTML = document.getElementById("script").innerHTML;
   </script>
 </body>
 </html>
