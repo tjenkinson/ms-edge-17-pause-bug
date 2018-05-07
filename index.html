@@ -20,13 +20,18 @@
 
 
     // this play() looks like it is getting applied after the load() call
-    audio.play().then(function() {
-      console.log('success');
+    var promise = audio.play()
+    
+    // edge 16 doesn't return a promise
+    if (promise && promise.then) {
+      promise.then(function() {
+        console.log('success');
 
-      //the pause below does apply
-      //audio.pause();
+        //the pause below does apply
+        //audio.pause();
 
-    }, function(e) { console.log('error', e); });
+      }, function(e) { console.log('error', e); });
+    }
 
 
     // this should reject the play() call above
@@ -40,6 +45,7 @@
 
 
     // uncommenting any of following doesn't make a difference
+    
     // audio.pause();
 
     //window.setTimeout(function() {
