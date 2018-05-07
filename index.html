@@ -6,6 +6,11 @@
   <title>edge 17 pause() bug</title>
 </head>
 <body>
+  <p>
+    Playback should be paused. In edge 16 this is the case. In edge 17 it is not. It seems that the <code>play()</code> call
+    gets buffered until after the `load()` call, and no other `pause()` calls cancel it.
+  </p>
+  
   <audio controls crossorigin="anonymous" src="./test.mp3" id="audio"></audio>
   
   <script type="text/javascript">
